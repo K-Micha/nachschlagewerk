@@ -1,0 +1,263 @@
+<article id="grundstruktur">
+  <h3>🔹 HTML – Grundstruktur einer Seite</h3>
+
+  <p>Jede HTML-Datei beginnt mit dem Doctype und hat einen Kopf (<code>&lt;head&gt;</code>) und einen sichtbaren Bereich (<code>&lt;body&gt;</code>).</p>
+
+  <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;       &lt;!-- Zeichensatz UTF-8 --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Meine erste Seite&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;Willkommen&lt;/h1&gt;
+    &lt;p&gt;Dies ist meine erste Webseite.&lt;/p&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+  <p>
+    ✅ <strong>Elemente:</strong><br>
+    <code>&lt;h1&gt;</code> bis <code>&lt;h6&gt;</code> – Überschriften (H1 = wichtig)<br>
+    <code>&lt;p&gt;</code> – Absatz<br>
+    <code>&lt;a href=""&gt;</code> – Link<br>
+    <code>&lt;br&gt;</code> – Zeilenumbruch<br>
+    <code>&lt;hr&gt;</code> – Trennlinie
+  </p>
+</article>
+<article id="listen-links-bilder">
+  <h3>🔹 HTML – Listen, Links & Bilder</h3>
+
+  <p>
+    Listen ordnen Inhalte strukturiert. Links verbinden Seiten. Bilder zeigen Medien an.
+  </p>
+
+  <h4>📋 Ungeordnete Liste (ul)</h4>
+  <pre class="code"><code>&lt;ul&gt;
+  &lt;li&gt;Apfel&lt;/li&gt;
+  &lt;li&gt;Banane&lt;/li&gt;
+  &lt;li&gt;Kirsche&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <h4>📑 Geordnete Liste (ol)</h4>
+  <pre class="code"><code>&lt;ol&gt;
+  &lt;li&gt;Erster Schritt&lt;/li&gt;
+  &lt;li&gt;Zweiter Schritt&lt;/li&gt;
+  &lt;li&gt;Dritter Schritt&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+  <h4>🔗 Link zu einer anderen Seite</h4>
+  <pre class="code"><code>&lt;a href="https://example.com" target="_blank"&gt;
+  Zur Webseite
+&lt;/a&gt;</code></pre>
+  <p><code>target="_blank"</code> öffnet den Link in einem neuen Tab.</p>
+
+  <h4>🖼️ Bild anzeigen</h4>
+  <pre class="code"><code>&lt;img src="bild.jpg" alt="Beschreibung" width="300"&gt;</code></pre>
+  <ul>
+    <li><code>src</code> = Bildpfad</li>
+    <li><code>alt</code> = Beschreibung, falls Bild fehlt (auch für Barrierefreiheit)</li>
+    <li><code>width</code> = Breite in Pixel (optional)</li>
+  </ul>
+</article>
+<article id="formulare">
+  <h3>🔹 HTML – Formulare: Eingabefelder & Buttons</h3>
+
+  <p>
+    Formulare werden verwendet, um Daten vom Nutzer zu erfassen und an den Server zu senden.
+  </p>
+
+  <pre class="code"><code>&lt;form action="/ziel" method="post"&gt;
+
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+
+  &lt;label for="email"&gt;E-Mail:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" name="agb"&gt; AGB akzeptieren
+  &lt;/label&gt;
+
+  &lt;input type="submit" value="Absenden"&gt;
+
+&lt;/form&gt;</code></pre>
+
+  <p>
+    ✅ <strong>Erklärung:</strong><br>
+    <code>action</code> = URL, an die die Daten gesendet werden<br>
+    <code>method="post"</code> = sendet die Daten im Hintergrund<br>
+    <code>label for</code> + <code>id</code> = sorgt für bessere Bedienbarkeit
+  </p>
+
+  <h4>🔳 Feldgruppen mit &lt;fieldset&gt; und &lt;legend&gt;</h4>
+  <pre class="code"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Persönliche Daten&lt;/legend&gt;
+
+  &lt;label for="stadt"&gt;Stadt:&lt;/label&gt;
+  &lt;input type="text" id="stadt" name="stadt"&gt;
+
+  &lt;label for="plz"&gt;PLZ:&lt;/label&gt;
+  &lt;input type="text" id="plz" name="plz"&gt;
+
+&lt;/fieldset&gt;</code></pre>
+
+  <p>
+    ✅ <strong>Tipp:</strong><br>
+    Nutze <code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> für sinnvolle Gruppierung – z. B. Kontaktdaten, Lieferadresse, etc.
+  </p>
+</article>
+<article id="struktur">
+  <h3>🔹 HTML – Aufbau moderner Seiten mit Struktur-Tags</h3>
+
+  <p>
+    Semantische Tags beschreiben die Funktion des Inhalts – so verstehen Browser, Suchmaschinen und Screenreader besser, was gemeint ist.
+  </p>
+
+  <ul>
+    <li><code>&lt;header&gt;</code> – oberer Seitenbereich (Logo, Navigation)</li>
+    <li><code>&lt;nav&gt;</code> – Navigation/Links</li>
+    <li><code>&lt;main&gt;</code> – Hauptinhalt der Seite</li>
+    <li><code>&lt;section&gt;</code> – logischer Abschnitt</li>
+    <li><code>&lt;article&gt;</code> – eigenständiger Inhalt (z. B. Blogbeitrag)</li>
+    <li><code>&lt;footer&gt;</code> – unterer Seitenbereich (z. B. Impressum)</li>
+  </ul>
+
+  <pre class="code"><code>&lt;header&gt;
+  &lt;h1&gt;Meine Webseite&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href="#start"&gt;Start&lt;/a&gt;
+    &lt;a href="#kontakt"&gt;Kontakt&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;Willkommen&lt;/h2&gt;
+    &lt;p&gt;Hier steht der Hauptinhalt.&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;article&gt;
+    &lt;h3&gt;Ein Beitrag&lt;/h3&gt;
+    &lt;p&gt;Dieser Artikel ist eigenständig.&lt;/p&gt;
+  &lt;/article&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2025 Micha&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+  <p>
+    ✅ <strong>Praxis-Tipp:</strong><br>
+    Nutze <code>&lt;main&gt;</code> nur 1× pro Seite. Alles, was nicht zur Navigation gehört, kommt rein.
+  </p>
+</article>
+<article id="begriffe-grundlagen">
+  <h3>📘 Begriffserklärungen – Klassen & IDs im Code</h3>
+
+  <p>
+    Diese Liste erklärt dir die häufigsten Klassennamen, die du beim Coden siehst – kurz, präzise, realistisch.
+  </p>
+
+  <ul>
+    <li>
+      <code>.container</code><br>
+      → Umfasst den gesamten Inhalt (z. B. für max-width, zentriert)
+    </li>
+
+    <li>
+      <code>.box</code><br>
+      → Eine einfache Box – oft für Inhalte mit Rahmen, Abstand, Farbe
+    </li>
+
+    <li>
+      <code>.form-wrapper</code><br>
+      → Umschließt ein Formular zentriert mit Padding und max-width
+    </li>
+
+    <li>
+      <code>.button-primary</code><br>
+      → Haupt-Button, optisch hervorgehoben (z. B. gelb, fett)
+    </li>
+
+    <li>
+      <code>.hidden</code><br>
+      → Unsichtbar (z. B. mit <code>display: none</code>), oft bei Tabs verwendet
+    </li>
+
+    <li>
+      <code>.inline-element</code><br>
+      → Kleines Element in einer Zeile, z. B. für Buttons oder Icons
+    </li>
+
+    <li>
+      <code>.main-header</code><br>
+      → Obere Kopfzeile einer Seite (meist mit Logo + Navigation)
+    </li>
+
+    <li>
+      <code>.item</code><br>
+      → Einzelnes Element in einer Liste oder Flexbox-Gruppe
+    </li>
+  </ul>
+
+  <p>
+    ✅ <strong>Praxis-Tipp:</strong><br>
+    Halte Klassennamen logisch und sprechend – du musst sie in 6 Monaten noch verstehen.
+  </p>
+</article>
+<article id="begriffe-erweitert">
+  <h3>📘 Weitere Begriffe – realistisch & direkt aus dem Projekt</h3>
+
+  <ul>
+    <li>
+      <code>id="meinButton"</code><br>
+      → Wird im JS mit <code>getElementById()</code> angesprochen, z. B. für Klicks
+    </li>
+
+    <li>
+      <code>.tab</code><br>
+      → Button, der per JavaScript einen Tab-Inhalt anzeigt (z. B. HTML, CSS, JS)
+    </li>
+
+    <li>
+      <code>.tab-content</code><br>
+      → Container, der Inhalte für den gewählten Tab enthält – per Klasse „hidden“ ausblendbar
+    </li>
+
+    <li>
+      <code>.code</code><br>
+      → Darstellung von Codeblöcken, meist mit dunklem Hintergrund & Monospace-Schrift
+    </li>
+
+    <li>
+      <code>data-target="js"</code><br>
+      → Spezielles Attribut für JS-Auswahl (→ z. B. <code>dataset.target</code>)
+    </li>
+
+    <li>
+      <code>.hidden</code><br>
+      → Wird vom Script gesetzt/entfernt, um Inhalte sichtbar oder unsichtbar zu machen
+    </li>
+
+    <li>
+      <code>.gradient</code><br>
+      → Klasse mit <code>background: linear-gradient(...)</code>; erzeugt weiche Farbverläufe
+    </li>
+
+    <li>
+      <code>.highlight</code><br>
+      → Markiert wichtigen Text (z. B. <code>background: yellow</code>)
+    </li>
+  </ul>
+
+  <p>
+    ✅ <strong>Tipp:</strong><br>
+    IDs werden nur <strong>einmal</strong> verwendet – Klassen kannst du mehrfach einsetzen.
+  </p>
+</article>

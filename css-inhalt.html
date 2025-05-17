@@ -1,0 +1,409 @@
+<article id="boxmodell">
+  <h3>📦 CSS – Box-Modell</h3>
+  <p>
+    Jede Box in CSS besteht aus 4 Bereichen:
+    <strong>margin</strong> (außen), <strong>border</strong> (Rahmen),
+    <strong>padding</strong> (Innenabstand) und <strong>content</strong> (Inhalt).
+  </p>
+
+  <pre class="code"><code>+-----------------------+   ⬅︎ margin (außen)
+|       margin          |
+|  +------------------+ |   ⬅︎ border (Rahmen)
+|  |     border       | |
+|  |  +------------+  | |   ⬅︎ padding (Innenabstand)
+|  |  |  padding   |  | |
+|  |  | +--------+ |  | |   ⬅︎ content (Inhalt)
+|  |  | | Inhalt | |  | |
+|  |  | +--------+ |  | |
+|  |  +------------+  | |
+|  +------------------+ |
++-----------------------+</code></pre>
+
+  <p>
+    ✅ <strong>Merksatz:</strong><br>
+    <code>margin</code> = Abstand zur nächsten Box<br>
+    <code>border</code> = sichtbarer Rahmen<br>
+    <code>padding</code> = Abstand vom Inhalt zum Rahmen<br>
+    <code>content</code> = das, was wirklich drinsteht (Text, Bild, etc.)
+  </p>
+
+  <pre class="code"><code>.box {
+  margin: 20px;
+  border: 2px solid black;
+  padding: 15px;
+}</code></pre>
+</article>
+<article id="display">
+  <h3>🔹 CSS – display: block / inline / inline-block</h3>
+
+  <p>
+    Mit <code>display</code> legst du fest, wie ein Element im Layout „auftreten“ soll.
+  </p>
+
+  <ul>
+    <li><strong>block</strong>: neues Element beginnt in einer neuen Zeile, nimmt die ganze Breite</li>
+    <li><strong>inline</strong>: bleibt in der Zeile, nur so breit wie nötig (z. B. <code>&lt;span&gt;</code>)</li>
+    <li><strong>inline-block</strong>: wie inline, aber du kannst Breite, Höhe, Padding, Margin setzen</li>
+  </ul>
+
+  <pre class="code"><code>/* Standard bei div, p, h1... */
+.block-element {
+  display: block;
+}
+
+/* Text innerhalb eines Absatzes */
+.inline-element {
+  display: inline;
+}
+
+/* Für z. B. Buttons nebeneinander mit Abstand */
+.inline-block-element {
+  display: inline-block;
+}</code></pre>
+
+  <p>✅ <strong>Typische Fehler:</strong></p>
+  <ul>
+    <li>Bei <code>inline</code> funktioniert <code>width</code> oder <code>height</code> NICHT!</li>
+    <li>Für zentrierte Boxen besser <code>inline-block</code> oder <code>flex</code> verwenden</li>
+  </ul>
+</article>
+<article id="position">
+  <h3>🔹 CSS – position: static / relative / absolute / fixed</h3>
+
+  <p>
+    Mit <code>position</code> legst du fest, wie ein Element im Raum steht.
+  </p>
+
+  <ul>
+    <li><strong>static</strong> – Standard. Kein spezielles Verhalten. Kein <code>top</code>, <code>left</code> möglich</li>
+    <li><strong>relative</strong> – bleibt im Flow, aber du kannst es verschieben (z. B. <code>top: 10px</code>)</li>
+    <li><strong>absolute</strong> – entfernt sich vom normalen Flow und positioniert sich relativ zum nächsten <code>position: relative</code>-Elternteil</li>
+    <li><strong>fixed</strong> – bleibt immer an der Stelle, egal ob du scrollst (z. B. für Sticky-Header)</li>
+  </ul>
+
+  <pre class="code"><code>.box {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+}</code></pre>
+
+  <p>
+    ✅ <strong>Wichtig:</strong><br>
+    Ein <code>absolute</code>-Element braucht immer einen <strong>positionierten Elterncontainer</strong>, sonst bezieht es sich auf das <code>&lt;body&gt;</code>.
+  </p>
+
+  <p>
+    ❗ <strong>Fehlerquelle:</strong><br>
+    <code>absolute</code> nimmt keinen Platz mehr ein – darunter liegende Inhalte „rutschen hoch“.
+  </p>
+</article>
+<article id="flexbox">
+  <h3>🔹 CSS – Flexbox: Achsen & Grundlogik</h3>
+
+  <p>
+    Flexbox ist ein Layout-Modell für horizontale oder vertikale Ausrichtung von Boxen.<br>
+    Du brauchst 1 Container + 1 oder mehrere Kinder.
+  </p>
+
+  <pre class="code"><code>Container = display: flex
+|
+|  Hauptachse (main axis)
+|  -------------------------->
+| [Item 1] [Item 2] [Item 3]
+|            ⬆
+|       Querachse (cross axis)
+</code></pre>
+
+  <p>
+    ✅ <strong>Merksatz:</strong><br>
+    <code>justify-content</code> = Hauptachse (z. B. links/rechts zentrieren)<br>
+    <code>align-items</code> = Querachse (z. B. vertikal zentrieren)
+  </p>
+
+  <pre class="code"><code>.container {
+  display: flex;
+  justify-content: center; /* Hauptachse: Mitte */
+  align-items: center;     /* Querachse: Mitte */
+  height: 200px;
+}
+
+.item {
+  background: #ffc;
+  padding: 1rem;
+  margin: 0.5rem;
+}</code></pre>
+
+  <p>
+    🔁 Du kannst die Richtung ändern mit:<br>
+    <code>flex-direction: row</code> (Standard, horizontal)<br>
+    <code>flex-direction: column</code> (vertikal)
+  </p>
+</article>
+<article id="flexbox-werte">
+  <h3>🔹 CSS – Flexbox: Steuerung der Items</h3>
+
+  <p>
+    Mit diesen Werten steuerst du, wie sich die einzelnen Elemente im Flex-Container verhalten.
+  </p>
+
+  <ul>
+    <li><code>gap</code> – Abstand zwischen den Elementen (statt margin)</li>
+    <li><code>flex-grow</code> – Wie stark darf sich das Element ausdehnen?</li>
+    <li><code>flex-shrink</code> – Darf es bei Platzmangel schrumpfen?</li>
+    <li><code>flex-basis</code> – Startbreite (vor grow/shrink)</li>
+  </ul>
+
+  <pre class="code"><code>.container {
+  display: flex;
+  gap: 1rem;
+}
+
+.item {
+  flex-grow: 1;      /* verteilt freien Platz gleichmäßig */
+  flex-shrink: 0;    /* darf nicht schrumpfen */
+  flex-basis: 200px; /* Ausgangsgröße */
+}</code></pre>
+
+  <p>
+    ✅ <strong>Kurzform:</strong><br>
+    <code>flex: 1 0 200px;</code>  
+    entspricht → <code>grow: 1</code>, <code>shrink: 0</code>, <code>basis: 200px</code>
+  </p>
+
+  <p>
+    ⚠️ <strong>Tipp:</strong><br>
+    Nutze <code>gap</code> statt <code>margin</code>, um gleichmäßige Abstände zu steuern.
+  </p>
+</article>
+<article id="farben">
+  <h3>🔹 CSS – Farben & Hintergrund</h3>
+
+  <p>
+    Du kannst Farben in CSS auf 3 Arten angeben:
+  </p>
+
+  <ul>
+    <li><code>name</code>: <code>red</code>, <code>blue</code>, <code>black</code></li>
+    <li><code>hex</code>: <code>#ff0000</code>, <code>#00ff00</code></li>
+    <li><code>rgb</code>: <code>rgb(255, 0, 0)</code></li>
+  </ul>
+
+  <pre class="code"><code>.text {
+  color: #333;              /* Textfarbe */
+}
+
+.box {
+  background-color: #ffe082;  /* Hintergrundfarbe */
+  border: 2px solid black;    /* Rahmenfarbe */
+}</code></pre>
+
+  <p>
+    ✅ <strong>Besondere Effekte:</strong>
+  </p>
+
+  <pre class="code"><code>.gradient {
+  background: linear-gradient(to right, #ffcc00, #ff6600);
+}</code></pre>
+
+  <p>
+    🔍 <strong>rgba()</strong> ermöglicht Transparenz:<br>
+    <code>rgba(0, 0, 0, 0.5)</code> = halbtransparentes Schwarz
+  </p>
+</article>
+<article id="schrift">
+  <h3>🔹 CSS – Schrift & Text-Formatierung</h3>
+
+  <p>
+    Mit diesen Eigenschaften steuerst du Aussehen und Lesbarkeit von Text.
+  </p>
+
+  <ul>
+    <li><code>font-family</code>: Schriftart (z. B. Arial, sans-serif)</li>
+    <li><code>font-size</code>: Schriftgröße (<code>px</code>, <code>rem</code>, <code>em</code>)</li>
+    <li><code>font-weight</code>: Schriftstärke (<code>normal</code>, <code>bold</code>, <code>100–900</code>)</li>
+    <li><code>text-align</code>: Ausrichtung (z. B. <code>left</code>, <code>center</code>, <code>right</code>)</li>
+    <li><code>line-height</code>: Zeilenabstand</li>
+    <li><code>letter-spacing</code>: Abstand zwischen Buchstaben</li>
+  </ul>
+
+  <pre class="code"><code>body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}</code></pre>
+
+  <p>
+    ✅ <strong>Tipp:</strong><br>
+    Nutze <code>rem</code> statt <code>px</code> für bessere Skalierung bei Schriftgrößen.
+  </p>
+</article>
+<article id="masse">
+  <h3>🔹 CSS – Maße & Einheiten</h3>
+
+  <p>
+    Mit diesen Einheiten steuerst du Breite, Höhe, Abstände, Schriftgrößen usw.
+  </p>
+
+  <ul>
+    <li><code>px</code> – feste Pixelgröße (z. B. <code>16px</code>)</li>
+    <li><code>%</code> – Prozent vom Elternelement (z. B. <code>width: 100%</code>)</li>
+    <li><code>rem</code> – relativ zur Schriftgröße von <code>&lt;html&gt;</code></li>
+    <li><code>em</code> – relativ zur aktuellen Schriftgröße</li>
+    <li><code>vw</code> – Prozent der Browserbreite</li>
+    <li><code>vh</code> – Prozent der Browserhöhe</li>
+  </ul>
+
+  <pre class="code"><code>.box {
+  width: 80%;        /* 80 % des Elterncontainers */
+  max-width: 600px;  /* aber nie breiter als 600px */
+  height: 50vh;      /* halbe Bildschirmhöhe */
+  padding: 1.5rem;   /* Abstand innen (relativ zur html-Schriftgröße) */
+}</code></pre>
+
+  <p>
+    ✅ <strong>Tipp:</strong><br>
+    Nutze <code>max-width</code> + <code>width: 100%</code>, um responsive Designs zu ermöglichen.
+  </p>
+</article>
+<article id="abstand">
+  <h3>🔹 CSS – Abstände: außen, innen, zwischen</h3>
+
+  <p>
+    Mit diesen Werten steuerst du den Abstand rund um und in einem Element.
+  </p>
+
+  <ul>
+    <li><code>margin</code> – Abstand <strong>außen</strong> (zur nächsten Box)</li>
+    <li><code>padding</code> – Abstand <strong>innen</strong> (zwischen Inhalt & Rahmen)</li>
+    <li><code>gap</code> – <strong>Abstand zwischen Items</strong> in Flex/Grid-Containern</li>
+  </ul>
+
+  <pre class="code"><code>.box {
+  margin: 20px;        /* außen rundherum */
+  padding: 10px;       /* innen rundherum */
+}
+
+.flex-container {
+  display: flex;
+  gap: 1rem;           /* Abstand zwischen .item-Boxen */
+}</code></pre>
+
+  <p>
+    ✅ <strong>Tipp:</strong><br>
+    Du kannst Abstände auch einzeln setzen:
+  </p>
+
+  <pre class="code"><code>margin-top: 10px;
+margin-right: 0;
+margin-bottom: 20px;
+margin-left: auto;</code></pre>
+
+  <p>
+    Oder in Kurzform:
+    <br><code>margin: 10px 0 20px auto;</code>
+    <br>(oben, rechts, unten, links – im Uhrzeigersinn)
+  </p>
+</article>
+<article id="rahmen">
+  <h3>🔹 CSS – Rahmen, abgerundete Ecken & Schatten</h3>
+
+  <p>
+    Diese Eigenschaften geben Boxen ein visuelles „Design“.
+  </p>
+
+  <ul>
+    <li><code>border</code> – Rahmen: Stärke, Stil, Farbe</li>
+    <li><code>border-radius</code> – abgerundete Ecken</li>
+    <li><code>box-shadow</code> – Schattenwurf (optional mit Unschärfe)</li>
+  </ul>
+
+  <pre class="code"><code>.box {
+  border: 2px solid #333;       /* 2 Pixel, durchgezogener Rahmen */
+  border-radius: 8px;           /* Ecken abrunden */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* x, y, blur, Farbe */
+}</code></pre>
+
+  <p>
+    ✅ <strong>Beispiel erklärt:</strong><br>
+    <code>2px</code> nach rechts & unten, mit 6px Unschärfe, grauer Schatten.
+  </p>
+
+  <p>
+    Du kannst auch nur einzelne Ecken abrunden:
+  </p>
+
+  <pre class="code"><code>border-top-left-radius: 10px;
+border-bottom-right-radius: 10px;</code></pre>
+</article>
+<article id="sichtbarkeit">
+  <h3>🔹 CSS – z-index, overflow, visibility</h3>
+
+  <p>
+    Diese Eigenschaften regeln, ob ein Element sichtbar ist, wie es überlappt oder ob es über den Rand hinausragt.
+  </p>
+
+  <ul>
+    <li><code>z-index</code> – Reihenfolge bei überlappenden Elementen</li>
+    <li><code>overflow</code> – Verhalten bei zu viel Inhalt</li>
+    <li><code>visibility</code> – Sichtbar, aber noch da</li>
+    <li><code>display</code> – Weg oder sichtbar (komplett!)</li>
+  </ul>
+
+  <pre class="code"><code>.box {
+  position: absolute;
+  z-index: 10;              /* höherer Wert = weiter vorne */
+  overflow: auto;           /* zeigt Scrollbalken bei Überlauf */
+  visibility: hidden;       /* unsichtbar, aber nimmt Platz ein */
+  display: none;            /* vollständig entfernt aus dem Layout */
+}</code></pre>
+
+  <p>
+    ✅ <strong>Unterschied:</strong><br>
+    <code>visibility: hidden</code> = unsichtbar, aber noch da<br>
+    <code>display: none</code> = komplett entfernt (nicht mehr im Layout)
+  </p>
+</article>
+<article id="media">
+  <h3>🔹 CSS – @media: Layout anpassen je nach Bildschirm</h3>
+
+  <p>
+    Mit <code>@media</code> kannst du dein Design für verschiedene Bildschirmgrößen optimieren – z. B. für Smartphones.
+  </p>
+
+  <pre class="code"><code>/* Standard-Design für große Bildschirme */
+.box {
+  width: 600px;
+  font-size: 1.2rem;
+}
+
+/* Wenn der Bildschirm kleiner als 768px ist (Tablet/Handy) */
+@media (max-width: 768px) {
+  .box {
+    width: 100%;
+    font-size: 1rem;
+  }
+}</code></pre>
+
+  <p>
+    ✅ <strong>Typische Breakpoints:</strong>
+  </p>
+  <ul>
+    <li><code>max-width: 1200px</code> → große Bildschirme (z. B. Laptop)</li>
+    <li><code>max-width: 992px</code> → Tablet hochkant</li>
+    <li><code>max-width: 768px</code> → Tablet quer / Handy groß</li>
+    <li><code>max-width: 480px</code> → Smartphones</li>
+  </ul>
+
+  <p>
+    ⚠️ <strong>Tipp:</strong><br>
+    Arbeite mobilfreundlich von Anfang an („mobile first“), oder prüfe mit dem Dev-Tool (F12 → Responsive Mode).
+  </p>
+</article>

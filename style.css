@@ -1,0 +1,181 @@
+/* Grundlayout */
+body {
+  font-family: sans-serif;
+  background-color: #fefefe;
+  color: #222;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Header mit Kopfbild */
+header {
+  background-color: #ffefcc;
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+  border-bottom: 2px solid #e6c676;
+}
+
+header img.header-image {
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  max-height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin: 0.2rem 0 1rem;
+  line-height: 1.2;
+  color: #222;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ffe082;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.tab:hover {
+  background-color: #ffcc57;
+}
+
+.tab.active {
+  background-color: #ffb700;
+  color: #fff;
+}
+
+/* Hauptbereich */
+main {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tab-content {
+  padding: 2rem 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Codeblöcke */
+pre.code {
+  background-color: #1e1e1e;
+  color: #eee;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Buttons */
+.button-primary {
+  background-color: #ffb700;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.button-primary:hover {
+  background-color: #e69e00;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.button-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Formularbereich */
+.form-wrapper {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff9e6;
+  border: 1px solid #ffd36b;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-wrapper h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #333;
+}
+
+.form-wrapper label {
+  display: block;
+  margin: 0.8rem 0 0.3rem;
+  font-weight: bold;
+}
+
+.form-wrapper input[type="text"],
+.form-wrapper input[type="email"],
+.form-wrapper input[type="password"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-wrapper input[type="submit"],
+.form-wrapper button {
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+/* Hinweisboxen */
+.alert-box {
+  background-color: #ffe0e0;
+  color: #a20000;
+  padding: 1rem;
+  border: 1px solid #ff9c9c;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.success-box {
+  background-color: #e6ffea;
+  color: #1b5e20;
+  padding: 1rem;
+  border: 1px solid #80c683;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+  background-color: #ffefcc;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  border-top: 2px solid #e6c676;
+}

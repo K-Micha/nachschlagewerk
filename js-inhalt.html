@@ -1,0 +1,176 @@
+<article id="variablen">
+  <h3>🔹 Variablen: let, const, var</h3>
+  <p>Variablen speichern Werte. Mit <code>let</code> kannst du Werte ändern. <code>const</code> ist fest. <code>var</code> ist veraltet.</p>
+  <pre class="code"><code>// veränderbare Variable
+let name = "Ali";
+
+// konstante Variable
+const alter = 25;
+
+// alt, bitte nicht mehr benutzen
+var land = "Marokko";</code></pre>
+</article>
+
+<article id="funktionen">
+  <h3>🔹 Funktionen</h3>
+  <p>Funktionen führen Code aus, den du öfter brauchst.</p>
+  <pre class="code"><code>function sagHallo() {
+  console.log("Hallo Welt");
+}
+
+sagHallo(); // Ruft die Funktion auf</code></pre>
+</article>
+
+<article id="queryselector">
+  <h3>🔹 DOM-Zugriff mit querySelector()</h3>
+  <p>Damit wählst du HTML-Elemente im Code aus – wie mit CSS.</p>
+  <pre class="code"><code>const box = document.querySelector(".box");</code></pre>
+</article>
+
+<article id="addeventlistener">
+  <h3>🔹 Klick-Event mit addEventListener()</h3>
+  <p>Damit reagierst du auf Benutzeraktionen wie Klicks.</p>
+  <pre class="code"><code>const button = document.getElementById("meinButton");
+
+button.addEventListener("click", function () {
+  alert("Du hast geklickt!");
+});</code></pre>
+</article>
+
+<article id="bedingungen">
+  <h3>🔹 Bedingungen mit if / else / switch</h3>
+  <p>Damit reagierst du auf unterschiedliche Situationen.</p>
+  <pre class="code"><code>let punkte = 80;
+
+if (punkte >= 90) {
+  console.log("Sehr gut");
+} else if (punkte >= 60) {
+  console.log("Bestanden");
+} else {
+  console.log("Nicht bestanden");
+}</code></pre>
+</article>
+
+<article id="schleifen">
+  <h3>🔹 Schleifen: for, while, forEach()</h3>
+  <p>Wiederhole Dinge mehrfach – je nach Bedarf.</p>
+  <pre class="code"><code>// for-Schleife
+for (let i = 0; i < 3; i++) {
+  console.log("Zahl:", i);
+}
+
+// while-Schleife
+let j = 0;
+while (j < 3) {
+  console.log("Wert:", j);
+  j++;
+}
+
+// forEach mit Array
+const namen = ["Ali", "Sara", "Musa"];
+namen.forEach(function(name) {
+  console.log("Name:", name);
+});</code></pre>
+</article>
+<article id="objekte">
+  <h3>🔹 Objekte & Arrays</h3>
+  <p>Objekte speichern zusammengehörige Daten mit Namen (key:value). Arrays sind einfache Listen.</p>
+  <pre class="code"><code>// Objekt: Werte mit Namen
+const person = {
+  name: "Ali",
+  alter: 30
+};
+
+console.log(person.name); // Zugriff auf Eigenschaft "name"
+
+// Array: Liste von Werten
+const farben = ["rot", "blau", "grün"];
+console.log(farben[0]); // erstes Element (rot)</code></pre>
+</article>
+
+<article id="eventsystem">
+  <h3>🔹 Events: event.target & this</h3>
+  <p><code>event.target</code> ist das, was der Nutzer angeklickt hat.<br>
+  <code>this</code> zeigt auf das Objekt, das gerade reagiert (z. B. der Button selbst).</p>
+  <pre class="code"><code>button.addEventListener("click", function(event) {
+  console.log(event.target); // das geklickte Element
+  console.log(this);         // das Objekt mit dem Listener (z. B. Button)
+});</code></pre>
+</article>
+
+<article id="arrow">
+  <h3>📌
+<article id="daten-typen">
+  <h3>🔹 Wichtige Datentypen in JS</h3>
+  <p>JavaScript kennt unterschiedliche Typen – wichtig für Vergleiche und Bedingungen.</p>
+  <pre class="code"><code>// Zeichenkette
+let text = "Hallo";
+
+// Zahl
+let zahl = 42;
+
+// Wahr/Falsch
+let aktiv = true;
+
+// Nichts gesetzt
+let leer = null;
+
+// Noch gar nicht definiert
+let unklar;
+
+console.log(typeof text); // "string"
+console.log(typeof zahl); // "number"
+console.log(typeof aktiv); // "boolean"
+console.log(typeof leer); // "object" (technisch bedingter JS-Fehler)
+console.log(typeof unklar); // "undefined"</code></pre>
+</article>
+
+<article id="typeof">
+  <h3>🔹 typeof – Typ prüfen</h3>
+  <p><code>typeof</code> zeigt an, was für ein Wert in der Variable steckt.</p>
+  <pre class="code"><code>let zahl = 123;
+console.log(typeof zahl); // "number"</code></pre>
+</article>
+
+<article id="vergleich">
+<article id="timeout-interval">
+  <h3>🔹 Zeitfunktionen: <code>setTimeout()</code> & <code>setInterval()</code></h3>
+  <p>Damit kannst du etwas zeitlich verzögert oder wiederholt ausführen.</p>
+  <pre class="code"><code>// einmalig nach 2 Sekunden
+setTimeout(() => {
+  console.log("Kommt verspätet");
+}, 2000);
+
+// alle 3 Sekunden
+setInterval(() => {
+  console.log("Kommt immer wieder");
+}, 3000);</code></pre>
+</article>
+
+<article id="math">
+  <h3>🔹 Math – Rechnen in JS</h3>
+  <p>Das <code>Math</code>-Objekt enthält viele Hilfsfunktionen.</p>
+  <pre class="code"><code>let zufall = Math.random();     // Zahl zwischen 0 und 1
+let gerundet = Math.round(4.7); // 5
+let abgerundet = Math.floor(4.9); // 4
+let hoch = Math.pow(2, 3);      // 8 (2 hoch 3)</code></pre>
+</article>
+
+<article id="json">
+  <h3>🔹 JSON – Daten speichern & senden</h3>
+  <p>JSON ist ein Format, um Daten zwischen Frontend und Backend zu übertragen.</p>
+  <pre class="code"><code>const person = {
+  name: "Ali",
+  alter: 30
+};
+
+// Objekt zu Text
+let text = JSON.stringify(person);
+
+// Text zu Objekt
+let neu = JSON.parse(text);
+
+console.log(neu.name); // "Ali"</code></pre>
+</article>
+
+<article id="storage">

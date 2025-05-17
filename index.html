@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MK – Nachschlagewerk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="header-image.png" alt="Header-Bild" class="header-image" />
+    <h1>📚 MK – Web-Nachschlagewerk</h1>
+    <nav>
+      <ul>
+        <li><button class="tab" data-file="nachschlag.html">HTML</button></li>
+        <li><button class="tab" data-file="css-inhalt.html">CSS</button></li>
+        <li><button class="tab" data-file="js-inhalt.html">JavaScript</button></li>
+        <li><button class="tab" data-file="begriffe-inhalt.html">Begriffe</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="tab-content">
+      <p>Lade HTML-Inhalt…</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Micha – Nachschlagewerk</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".tab");
+    const contentDiv = document.getElementById("tab-content");
+
+    function ladeInhalt(datei) {
+      contentDiv.innerHTML = "<p>Lade " + datei + "…</p>";
+      fetch(datei)
+        .then(response => {
+          if (!response.ok) throw new Error("Fehler beim Laden von " + datei);
+          return response.text();
+        })
+        .then(html => contentDiv.innerHTML = html)
+        .catch(error => contentDiv.innerHTML = "<p style='color:red'>" + error.message + "</p>");
+    }
+
+    // Tabs klickbar machen
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        ladeInhalt(button.dataset.file);
+      });
+    });
+
+    // Beim ersten Laden direkt HTML anzeigen
+    ladeInhalt("nachschlag.html");
+  </script>
+
+</body>
+</html>
